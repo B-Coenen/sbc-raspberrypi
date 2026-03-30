@@ -47,6 +47,11 @@ func (i *RpiInstaller) Install(options overlay.InstallOptions[rpiOptions]) error
 		return err
 	}
 
+	err = copy.Dir(filepath.Join(options.ArtifactsPath, "arm64/firmware/revpi_generic/boot"), filepath.Join(options.MountPrefix, "/boot/EFI"))
+	if err != nil {
+		return err
+	}
+	
 	err = copy.Dir(filepath.Join(options.ArtifactsPath, "dtb"), filepath.Join(options.MountPrefix, "/boot/EFI"))
 	if err != nil {
 		return err

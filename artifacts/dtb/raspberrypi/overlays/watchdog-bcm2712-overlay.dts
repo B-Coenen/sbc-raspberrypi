@@ -1,0 +1,31 @@
+// SPDX-License-Identifier: GPL-2.0
+
+/*
+ * Add bcm2835-pm watchdog/power node for BCM2712 (RPi5).
+ *
+ * The RPi downstream bcm2712.dtsi does not include this node,
+ * but it is present in the upstream mainline kernel. The
+ * bcm2835-pm MFD driver (CONFIG_MFD_BCM2835_PM) probes this
+ * node and creates the bcm2835-wdt child platform device.
+ */
+
+/dts-v1/;
+/plugin/;
+
+/ {
+	compatible = "brcm,bcm2712";
+
+	fragment@0 {
+		target = <&soc>;
+		__overlay__ {
+			pm: watchdog@7d200000 {
+				compatible = "brcm,bcm2712-pm", "brcm,bcm2835-pm-wdt";
+				reg = <0x7d200000 0x604>;
+				reg-names = "pm";
+				#power-domain-cells = <1>;
+				#reset-cells = <1>;
+				system-power-controller;
+			};
+		};
+	};
+};

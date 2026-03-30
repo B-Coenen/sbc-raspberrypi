@@ -18,10 +18,10 @@ vars:
   raspberrypi_kernel_sha256: c95906cfbc7808de5860c6d86537bea22e3501f600a5209de59a86cb436886f6
   raspberrypi_kernel_sha512: 0ed5d490c491e590b5980dccf6fcac0dd3c47accbfacd40d91507c12801cff34fa6a1c68991c8a6c57bb259c909121414766f35a0b11c4bd5d62c3e11d710839
 
-  # renovate: datasource=github-tags depName=revolutionpi/linux
-  revpi_kernel_version: v6.6.46-rt39-revpi7
-  revpi_kernel_sha256: 3b56e21be6ddc5771e1ffe5af21c52cb78d47a72aa5b5a77d1ba60b211d3f006
-  revpi_kernel_sha512: 683684333616c99f9b08e7465041862b01056840f4eb3eb9cc2a957d69f3b86cbf98c23199a8d1c5d919944233f9c866d6467a2a6aa965fb6c77621eb96a7fe2
+  # RevPi 6.18 snapshot pinned to branch head commit from GitLab.
+  revpi_kernel_version: 949b57e1698e1acb8feca6268bfda0cb10c0c856
+  revpi_kernel_sha256: c1f5adb8d8bd932635773cca7bc632dc30fb9eeabe2faf2f32cc3f738afc2608
+  revpi_kernel_sha512: c0893678c1723434573ffdb00555b978b6fd9476f72dfbedee7cb6ad351b6945d4eeb5ff7cf8160d000edbced13fd5580586d9dccafd147e4f75f417c2b58214
 
 labels:
   org.opencontainers.image.source: https://github.com/siderolabs/sbc-raspberrypi

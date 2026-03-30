@@ -7,7 +7,7 @@ steps:
   - env:
       ARCH: arm64
   - sources:
-      - url: https://github.com/revolutionpi/linux/archive/refs/tags/{{ .revpi_kernel_version }}.tar.gz
+      - url: https://gitlab.com/revolutionpi/linux/-/archive/{{ .revpi_kernel_version }}/linux-{{ .revpi_kernel_version }}.tar.gz
         destination: revpi-kernel.tar.gz
         sha256: "{{ .revpi_kernel_sha256 }}"
         sha512: "{{ .revpi_kernel_sha512 }}"
