@@ -396,9 +396,6 @@
 			linux,rs485-enabled-at-boot-time;
 			rs485-rts-active-low;
 			rs485-term-gpios = <&exp_gpio_power 4 GPIO_ACTIVE_HIGH>;
-			dmas = <&rp1_dma RP1_DMA_UART4_TX>,
-			       <&rp1_dma RP1_DMA_UART4_RX>;
-			dma-names = "tx", "rx";
 			status = "okay";
 		};
 	};
