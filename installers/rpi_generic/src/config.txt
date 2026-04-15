@@ -13,10 +13,10 @@ arm_64bit=1
 arm_boost=1
 # Enable the primary/console UART.
 enable_uart=1
-# Add PM/watchdog node for BCM2712.
-dtoverlay=watchdog-bcm2712
-# RevPi Connect 5 support.
+# uart 4 overlays
 dtoverlay=uart4
+dtoverlay=uart4-pi5
+# RevPi Connect 5 support.
 dtoverlay=revpi-connect5
 [pi4]
 # Disable Bluetooth.
