@@ -5,8 +5,10 @@
 package main
 
 import (
+	"context"
 	_ "embed"
 	"os"
+	"os/signal"
 	"path/filepath"
 
 	"github.com/siderolabs/go-copy/copy"
@@ -18,7 +20,10 @@ import (
 var configTxt []byte
 
 func main() {
-	adapter.Execute(&RpiInstaller{})
+	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt)
+	defer cancel()
+
+	adapter.Execute(ctx, &RpiInstaller{})
 }
 
 type RpiInstaller struct{}
@@ -28,7 +33,7 @@ type rpiOptions struct {
 	ConfigTxtAppend string `yaml:"configTxtAppend,omitempty"`
 }
 
-func (i *RpiInstaller) GetOptions(extra rpiOptions) (overlay.Options, error) {
+func (i *RpiInstaller) GetOptions(_ context.Context, extra rpiOptions) (overlay.Options, error) {
 	return overlay.Options{
 		Name: "rpi_5",
 		KernelArgs: []string{
@@ -40,7 +45,7 @@ func (i *RpiInstaller) GetOptions(extra rpiOptions) (overlay.Options, error) {
 	}, nil
 }
 
-func (i *RpiInstaller) Install(options overlay.InstallOptions[rpiOptions]) error {
+func (i *RpiInstaller) Install(_ context.Context, options overlay.InstallOptions[rpiOptions]) error {
 	// Pi 5 does not need any binaries from raspberrypi-firmware, so only install dtbs (built from Linux) and U-Boot
 	err := copy.Dir(filepath.Join(options.ArtifactsPath, "rpi_5"), filepath.Join(options.MountPrefix, "/boot/EFI"))
 	if err != nil {
