@@ -123,6 +123,9 @@
 				 */
 				right-pbswitch-gpios = <&exp_gpio_power 3 GPIO_ACTIVE_LOW>,
 						       <&exp_gpio_power 5 GPIO_ACTIVE_HIGH>;
+
+				/* RS485 termination (directly handled by piControl) */
+				rs485-term-gpios = <&exp_gpio_core 11 GPIO_ACTIVE_HIGH>;
 			};
 		};
 	};
@@ -368,7 +371,7 @@
 	};
 
 	/* UART2 (PB_SERIAL) */
-	fragment@5 {
+		fragment@5 {
 		target = <&uart2>;
 		__overlay__ {
 			pinctrl-names = "default";
@@ -376,9 +379,6 @@
 			linux,rs485-enabled-at-boot-time;
 			rs485-tx-drain-poll;
 			rs485-term-gpios = <&exp_gpio_core 11 GPIO_ACTIVE_HIGH>;
-			dmas = <&rp1_dma RP1_DMA_UART2_TX>,
-			       <&rp1_dma RP1_DMA_UART2_RX>;
-			dma-names = "tx", "rx";
 			status = "okay";
 
 			pi_bridge {
