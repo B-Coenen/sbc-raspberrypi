@@ -1,12 +1,12 @@
-# syntax = ghcr.io/siderolabs/bldr:v0.5.5
+# syntax = ghcr.io/siderolabs/bldr:v0.6.1
 
 format: v1alpha2
 
 vars:
   # renovate: datasource=github-tags depName=raspberrypi/firmware
-  raspberrypi_firmware_version: 1.20250915
-  raspberrypi_firmware_sha256: 55a5d58c59bf7171562f1f1289c638e97e2b8d90374084887bfe5fc83e57cb1d
-  raspberrypi_firmware_sha512: 33120c901c59fbcd267427dce5fd8f174d32476bfae76744697f6729151d66054c6f0bd54f29c3b715c1492a52724fe2973a6adbf31cfb79f1c82dd94983cf77
+  raspberrypi_firmware_version: 1.20260521
+  raspberrypi_firmware_sha256: b900de58571920a306ab2d1296500499d0744451dbefda0c76b79e652bb71cb7
+  raspberrypi_firmware_sha512: 92e9680a521cfb3b7824ed5a50026414ace49765b568b66cd919eb973a46ecf13743fe2e11145a7d28036591705b36198c3cc2765a132f32caf2fe22206c3818
 
   # renovate: datasource=github-tags extractVersion=^v(?<version>.*)$ depName=u-boot/u-boot
   uboot_version: 2026.01
@@ -14,9 +14,9 @@ vars:
   uboot_sha512: b1f988a497c77da60faf89ed33034e9ae58c4cd7f208e5ce451f1372e13540a66289bee4f08ca2f68f105d73f1ceae058b1f713db549edbcc885d9c66bdc4f8b
 
   # renovate: datasource=github-tags depName=raspberrypi/linux
-  raspberrypi_kernel_version: stable_20250428
-  raspberrypi_kernel_sha256: c95906cfbc7808de5860c6d86537bea22e3501f600a5209de59a86cb436886f6
-  raspberrypi_kernel_sha512: 0ed5d490c491e590b5980dccf6fcac0dd3c47accbfacd40d91507c12801cff34fa6a1c68991c8a6c57bb259c909121414766f35a0b11c4bd5d62c3e11d710839
+  raspberrypi_kernel_version: stable_20260724
+  raspberrypi_kernel_sha256: ed379d946780441248e5636a41d56fee11161f474025d4216a9fe037daef1b25
+  raspberrypi_kernel_sha512: b70147da8eae0a4f6b2f64ad0fc6ab1dd9a415de944646000defb7e8a418c5cba4d6a0727006721e536f0cd6f3c4959c4d921551b8eed8e3b49aab7f1f186d27
 
   # RevPi 6.18 snapshot pinned to branch head commit from GitLab.
   revpi_kernel_version: 949b57e1698e1acb8feca6268bfda0cb10c0c856

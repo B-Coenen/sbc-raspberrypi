@@ -1,4 +1,4 @@
-module rpi_generic
+module rpi_5
 
 go 1.26.5
 

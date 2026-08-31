@@ -35,10 +35,10 @@ type rpiOptions struct {
 
 func (i *RpiInstaller) GetOptions(_ context.Context, extra rpiOptions) (overlay.Options, error) {
 	return overlay.Options{
-		Name: "revpi_generic",
+		Name: "rpi_5",
 		KernelArgs: []string{
 			"console=tty0",
-			"console=ttyAMA0,115200",
+			"console=ttyAMA10,115200",
 			"sysctl.kernel.kexec_load_disabled=1",
 			"talos.dashboard.disabled=1",
 		},
@@ -46,12 +46,8 @@ func (i *RpiInstaller) GetOptions(_ context.Context, extra rpiOptions) (overlay.
 }
 
 func (i *RpiInstaller) Install(_ context.Context, options overlay.InstallOptions[rpiOptions]) error {
-	err := copy.Dir(filepath.Join(options.ArtifactsPath, "arm64/firmware/boot"), filepath.Join(options.MountPrefix, "/boot/EFI"))
-	if err != nil {
-		return err
-	}
-
-	err = copy.Dir(filepath.Join(options.ArtifactsPath, "arm64/firmware/revpi_generic/boot"), filepath.Join(options.MountPrefix, "/boot/EFI"))
+	// Pi 5 does not need any binaries from raspberrypi-firmware, so only install dtbs (built from Linux) and U-Boot
+	err := copy.Dir(filepath.Join(options.ArtifactsPath, "rpi_5"), filepath.Join(options.MountPrefix, "/boot/EFI"))
 	if err != nil {
 		return err
 	}
